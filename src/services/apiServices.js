@@ -5,12 +5,15 @@ console.log("api ho", apiKey);
 // const apiKey = 'aa8049ed2742afdf98e0d6923ea3ffac';
 const baseUrl = 'https://api.themoviedb.org/3';
 
+
 // Function to fetch popular movies
 export const fetchPopularMovies = async () => {
   try {
       console.log("api key", apiKey);
     // Log the URL to confirm it's correct
     const url = `${baseUrl}/movie/popular?api_key=${apiKey}`;
+    // const check=`${baseUrl}/api_key=${apiKey}`;
+    console.log("trying to check",check);
     console.log('Request URL:', url);
     
     // Make the API call
