@@ -13,7 +13,7 @@ export const fetchPopularMovies = async () => {
     // Log the URL to confirm it's correct
     const url = `${baseUrl}/movie/popular?api_key=${apiKey}`;
     // const check=`${baseUrl}/api_key=${apiKey}`;
-    console.log("trying to check",check);
+    // console.log("trying to check",check);
     console.log('Request URL:', url);
     
     // Make the API call
