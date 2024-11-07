@@ -2,20 +2,16 @@ import axios from 'axios';
 
 const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 console.log("api ho", apiKey);
-// const apiKey = 'aa8049ed2742afdf98e0d6923ea3ffac';
+
 const baseUrl = 'https://api.themoviedb.org/3';
 
 
-// Function to fetch popular movies
+
 export const fetchPopularMovies = async () => {
   try {
-      console.log("api key", apiKey);
-    // Log the URL to confirm it's correct
-    const url = `${baseUrl}/movie/popular?api_key=${apiKey}`;
-    // const check=`${baseUrl}/api_key=${apiKey}`;
-    // console.log("trying to check",check);
+      console.log("api key", apiKey); 
+    const url = `${baseUrl}/movie/popular?api_key=${apiKey}`;  
     console.log('Request URL:', url);
-    
     // Make the API call
     const response = await axios.get(url);
     console.log('API Response:', response.data); // Log the entire response
@@ -25,3 +21,44 @@ export const fetchPopularMovies = async () => {
     return []; // Return an empty array in case of error
   }
 };
+
+
+export const fetchAllMovies = async (page) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}&language=en-US`
+    );
+    return response.data.results; // Return only the list of movies from the response
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+    return []; // Return an empty array on error
+  }
+};
+
+
+// export const fetchAllMovies =async ()=>{
+ 
+//   let allMovies=[];
+//   let page=1;
+//   let totalPages=1;
+
+//   try{
+//     while(page<= totalPages){
+//       const response = await axios.get(`${baseUrl}/discover/movie`,{
+//         params:{
+//           api_key:apiKey,
+//           page:page,
+//         },
+//       });
+//       allMovies = [...allMovies, ...response.data.results]; // Add movies from current page
+//       totalPages = response.data.total_pages; // Update totalPages
+//       page++; // Increment page for next API call
+//     }
+//     return allMovies;
+
+//   }
+//   catch (error) {
+//     console.error('Error fetching all movies:', error);
+//     return [];
+//   }
+// }
