@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import heroSection from "../../components/heroSection";
 import { fetchAllMovies } from "../../services/apiServices"; // Make sure your fetchAllMovies function is updated
 
 const Home = () => {
@@ -33,6 +34,7 @@ const Home = () => {
 
   return (
     <div className="movies-list">
+      {/* <heroSection/> */}
       <h1>All Movies</h1>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
         {movies.map((movie) => (

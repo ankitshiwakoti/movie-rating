@@ -6,15 +6,15 @@ console.log("api ho", apiKey);
 const baseUrl = 'https://api.themoviedb.org/3';
 
 
-
-export const fetchPopularMovies = async () => {
+// Fetching Popular Movies
+export const fetchTrendingMovies = async () => {
   try {
       console.log("api key", apiKey); 
     const url = `${baseUrl}/movie/popular?api_key=${apiKey}`;  
     console.log('Request URL:', url);
     // Make the API call
     const response = await axios.get(url);
-    console.log('API Response:', response.data); // Log the entire response
+    console.log('API Response popular:', response.data); // Log the entire response
     return response.data.results; // Return the movie results
   } catch (error) {
     console.error('Error fetching popular movies:', error.response ? error.response.data : error);
@@ -22,7 +22,7 @@ export const fetchPopularMovies = async () => {
   }
 };
 
-
+// fetching all movie
 export const fetchAllMovies = async (page) => {
   try {
     const response = await axios.get(
@@ -34,31 +34,3 @@ export const fetchAllMovies = async (page) => {
     return []; // Return an empty array on error
   }
 };
-
-
-// export const fetchAllMovies =async ()=>{
- 
-//   let allMovies=[];
-//   let page=1;
-//   let totalPages=1;
-
-//   try{
-//     while(page<= totalPages){
-//       const response = await axios.get(`${baseUrl}/discover/movie`,{
-//         params:{
-//           api_key:apiKey,
-//           page:page,
-//         },
-//       });
-//       allMovies = [...allMovies, ...response.data.results]; // Add movies from current page
-//       totalPages = response.data.total_pages; // Update totalPages
-//       page++; // Increment page for next API call
-//     }
-//     return allMovies;
-
-//   }
-//   catch (error) {
-//     console.error('Error fetching all movies:', error);
-//     return [];
-//   }
-// }
